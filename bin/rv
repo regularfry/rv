@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Usage: 
+#   rv <ruby_selector> [command]
+#
+# Run a command (defaulting to $SHELL) with the ruby and gemenv chosen
+# by the given ruby_selector, which is simply passed to chruby-exec.
+# Set the $GEMENV environment variable if you want the gem environment
+# to be put somewhere other than .env/<ruby_selector>.
+
+set -e
+set -u
+
+ruby=$1
+shift
+
+# This slightly odd pair of lines says: everything after the ruby
+# specification is the command to run inside the chruby-exec subshell,
+# defaulting to the user's $SHELL.
+cmd=$*
+: ${cmd:="${SHELL}"}
+
+# In a similar fashion, we can override the default gemenv selector
+# here:
+: ${GEMENV:=".env/${ruby}"}
+
+chruby-exec ${ruby} -- ${GEMENV}/bin/exec ${cmd}
