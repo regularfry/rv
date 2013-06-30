@@ -3,7 +3,7 @@
 # Usage:
 #   rv-init <ruby_selector> [gem_name]+
 #
-# Create a gemsh gem environment, by default at .env/<ruby_selector>,
+# Create a gemsh gem environment, by default at .rv/<ruby_selector>,
 # and install the (optional) named gems into it.
 # Set $GEMENV to override the gem environment location.
 # Chruby must already know about the ruby named by <ruby_selector>
@@ -16,7 +16,7 @@ ruby=$1
 shift
 gems=$*
 
-: ${GEMENV:=".env/${ruby}"}
+: ${GEMENV:=".rv/${ruby}"}
 
 mkdir -p ${GEMENV}
 gemsh ${GEMENV}

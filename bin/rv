@@ -6,7 +6,7 @@
 # Run a command (defaulting to $SHELL) with the ruby and gem environment chosen
 # by the given ruby_selector, which is simply passed to chruby-exec.  Set the
 # $GEMENV environment variable if you want the gem environment to be put
-# somewhere other than .env/<ruby_selector>.
+# somewhere other than .rv/<ruby_selector>.
 
 set -e
 set -u
@@ -22,6 +22,6 @@ cmd=$*
 
 # In a similar fashion, we can override the default gem environment selector
 # here:
-: ${GEMENV:=".env/${ruby}"}
+: ${GEMENV:=".rv/${ruby}"}
 
 chruby-exec ${ruby} -- ${GEMENV}/bin/exec ${cmd}

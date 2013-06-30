@@ -18,7 +18,7 @@ To initialise a gemset for use with a specific ruby:
     $ ruby-install ruby 1.9.3   # must be done first
     $ rv-init 1.9.3
 
-By default, this will generate a GEM\_HOME within the `.env/1.9.3/`
+By default, this will generate a GEM\_HOME within the `.rv/1.9.3/`
 directory.  As the comment implies, the ruby must be installed before
 running rv-init, but you don't have to use ruby-install to provide it.
 Anything that installs a ruby which chruby can select will do.
@@ -30,7 +30,7 @@ To use the gemset you've just created:
 This will launch a $SHELL process with ruby 1.9.3 selected, and the
 gemset you've just created activated for you to work in.  If you now run
 `gem install rails`, the gem will be installed into
-`.env/1.9.3/gem_home`.
+`.rv/1.9.3/gem_home`.
 
 If you want to install gems when you create the gemset to save a step,
 specify them to rv-init:
@@ -40,12 +40,12 @@ specify them to rv-init:
 If you want a named gemset, you can specify it with the GEMENV
 environment variable:
 
-    $ GEMENV=.env/myrailsapp rv-init 1.9.3 rails bundler
+    $ GEMENV=.rv/myrailsapp rv-init 1.9.3 rails bundler
 
-This will create a gem environment at `.env/myrailsapp`, with the rails
+This will create a gem environment at `.rv/myrailsapp`, with the rails
 and bundler gems installed by ruby 1.9.3.  You can activate it like so:
 
-    $ GEMENV=.env/myrailsapp rv 1.9.3
+    $ GEMENV=.rv/myrailsapp rv 1.9.3
 
 If you want to run a command other than $SHELL in your gem environment,
 pass it to `rv`:
