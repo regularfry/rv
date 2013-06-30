@@ -1,3 +1,9 @@
+rv (0.0.2) unstable; urgency=low
+
+  * Switch from gemenv to gemsh
+
+ -- Alex Young <alex@blackkettle.org>  Wed, 26 Jun 2013 22:52:25 +0100
+
 rv (0.0.1) unstable; urgency=low
 
   * Initial Release.
