@@ -1,0 +1,13 @@
+Source: rv
+Section: devel
+Priority: extra
+Maintainer: Alex Young <alex@blackkettle.org>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Homepage: https://github.com/regularfry/rv
+
+Package: rv
+Architecture: all
+Depends: ${misc:Depends}, gemsh
+Description: Trivial ruby version switcher.
+ Switch between ruby versions and gemsets with gemsh and chruby.

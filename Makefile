@@ -1,5 +1,5 @@
 NAME=rv
-VERSION=0.0.1
+VERSION=0.0.2
 AUTHOR=regularfry
 URL=https://github.com/$(AUTHOR)/$(NAME)
 
@@ -13,9 +13,10 @@ PKG_NAME=$(NAME)-$(VERSION)
 PKG=$(PKG_DIR)/$(PKG_NAME).tar.gz
 SIG=$(PKG_DIR)/$(PKG_NAME).asc
 
-DESTDIR?=/usr/local
-PREFIX?=$(DESTDIR)
-DOC_DIR=$(PREFIX)/share/doc/$(PKG_NAME)
+DESTDIR?=/
+PREFIX?=/usr/local
+INSTALL_PATH=$(DESTDIR)/$(PREFIX)
+DOC_DIR=$(INSTALL_PATH)/share/doc/$(PKG_NAME)
 
 pkg:
 	mkdir $(PKG_DIR)
@@ -26,7 +27,9 @@ share/man/man1/rv.1: doc/man/rv.1.md
 share/man/man1/rv-init.1: doc/man/rv-init.1.md
 	kramdown-man doc/man/rv-init.1.md > share/man/man1/rv-init.1
 
-man: share/man/man1/rv.1 share/man/man1/rv-init.1
+manpages: share/man/man1/rv.1 share/man/man1/rv-init.1
+
+man: manpages
 	git commit -m "Updated the man pages" \
 		doc/man/rv.1.md share/man/man1/rv.1 \
 		doc/man/rv-init.1.md share/man/man1/rv-init.1
@@ -59,13 +62,15 @@ tag:
 release: tag download sign
 
 install:
-	for dir in $(INSTALL_DIRS); do mkdir -p $(PREFIX)/$$dir; done
-	for file in $(INSTALL_FILES); do cp $$file $(PREFIX)/$$file; done
+	for dir in $(INSTALL_DIRS); do mkdir -p $(INSTALL_PATH)/$$dir; done
+	for file in $(INSTALL_FILES); do cp $$file $(INSTALL_PATH)/$$file; done
+
+install_docs:
 	mkdir -p $(DOC_DIR)
 	cp -r $(DOC_FILES) $(DOC_DIR)/
 
 uninstall:
-	for file in $(INSTALL_FILES); do rm -f $(PREFIX)/$$file; done
+	for file in $(INSTALL_FILES); do rm -f $(INSTALL_PATH)/$$file; done
 	rm -rf $(DOC_DIR)
 
-.PHONY: build man download sign verify clean test tag release install uninstall all
+.PHONY: build man download sign verify clean test tag release install uninstall all manpages

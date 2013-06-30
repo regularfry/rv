@@ -1,9 +1,14 @@
 rv
 ==
 
-A trivial wrapper around the (chruby,gemenv) pair.  Use it to set up and
+A trivial wrapper around the (chruby,gemsh) pair.  Use it to set up and
 switch between gemsets and selected ruby interpreters as part of your
 development workflow.
+
+Installation
+------------
+
+    # make install
 
 Usage
 -----
@@ -52,9 +57,9 @@ pass it to `rv`:
 Details
 -------
 
-`rv` is a very thin wrapper around `chruby` and `gemenv`.  See
+`rv` is a very thin wrapper around `chruby` and `gemsh`.  See
 https://github.com/postmodern/chruby and
-https://github.com/regularfry/gemenv for details of these projects.
+https://github.com/regularfry/gemsh for details of these projects.
 
 
 Author

@@ -3,10 +3,10 @@
 # Usage: 
 #   rv <ruby_selector> [command]
 #
-# Run a command (defaulting to $SHELL) with the ruby and gemenv chosen
-# by the given ruby_selector, which is simply passed to chruby-exec.
-# Set the $GEMENV environment variable if you want the gem environment
-# to be put somewhere other than .env/<ruby_selector>.
+# Run a command (defaulting to $SHELL) with the ruby and gem environment chosen
+# by the given ruby_selector, which is simply passed to chruby-exec.  Set the
+# $GEMENV environment variable if you want the gem environment to be put
+# somewhere other than .env/<ruby_selector>.
 
 set -e
 set -u
@@ -20,7 +20,7 @@ shift
 cmd=$*
 : ${cmd:="${SHELL}"}
 
-# In a similar fashion, we can override the default gemenv selector
+# In a similar fashion, we can override the default gem environment selector
 # here:
 : ${GEMENV:=".env/${ruby}"}
 
