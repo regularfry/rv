@@ -1,5 +1,5 @@
 NAME=rv
-VERSION=0.0.2
+VERSION=0.1.0
 AUTHOR=regularfry
 URL=https://github.com/$(AUTHOR)/$(NAME)
 

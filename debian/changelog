@@ -1,3 +1,9 @@
+rv (0.1.0) unstable; urgency=low
+
+  * Improve ruby selection logic
+
+ -- Alex Young <alex@blackkettle.org>  Mon, 26 Jan 2015 18:23:32 +0000
+
 rv (0.0.2) unstable; urgency=low
 
   * Switch from gemenv to gemsh
