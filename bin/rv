@@ -11,8 +11,14 @@
 set -e
 set -u
 
-ruby=$1
-shift
+ruby=${1:-}
+if [ ! -z "${ruby}" ]; then
+  shift
+fi
+
+if [ -z "${ruby}" ]; then
+  ruby=$(cd .rv && ls -d */ | sort | tail -n1 | tr -d '/')
+fi
 
 # This slightly odd pair of lines says: everything after the ruby
 # specification is the command to run inside the chruby-exec subshell,
@@ -22,6 +28,11 @@ cmd=$*
 
 # In a similar fashion, we can override the default gem environment selector
 # here:
-: ${GEMENV:=".rv/${ruby}"}
+: ${GEMENV:=$(ls -d .rv/*${ruby}* | tail -n1)}
+
+if [ -z ${GEMENV} ]; then
+  echo "rv: Cannot find a ruby called ${ruby}!" >&2
+  exit 1
+fi
 
 chruby-exec ${ruby} -- ${GEMENV}/bin/exec ${cmd}
