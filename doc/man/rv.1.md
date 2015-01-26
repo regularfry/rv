@@ -2,7 +2,7 @@
 
 ## SYNOPSIS
 
-`rv` [RUBY] [COMMAND]
+`rv` <RUBY> <COMMAND>
 
 ## DESCRIPTION
 
@@ -37,6 +37,18 @@ Create a named gem environment and activate it with a specific shell:
 
     $ GEMENV=myapp rv-init 1.9.3
     $ GEMENV=myapp rv 1.9.3 /bin/dash
+
+`rv` lets you use an abbreviated ruby name; it will pick the last match:
+
+    $ rv-init ruby-1.9.3-p551
+    $ rv 1.9.3
+      # => ruby-1.9.3-p551 selected
+
+`rv` will also let you leave the ruby name off completely:
+
+    $ rv-init 1.9.3
+    $ rv
+      # => 1.9.3 selected
 
 ## FILES
 
