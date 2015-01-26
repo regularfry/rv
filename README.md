@@ -10,6 +10,17 @@ Installation
 
     # make install
 
+Quick Start
+-----------
+
+In a project directory:
+
+    $ ruby-install ruby 1.9.3
+    $ rv-init 1.9.3
+    $ rv
+
+This configures and launches an environment for a specific ruby.
+
 Usage
 -----
 
@@ -53,6 +64,8 @@ pass it to `rv`:
     $ rv 1.9.3 ruby -v
     ruby 1.9.3p429 (2013-05-15 revision 40747) [x86_64-linux]
 
+`rv` also sets the `$VIRTUAL\_ENV` environment variable, which you can
+include in your `$PS1` prompt setting.
 
 Details
 -------
