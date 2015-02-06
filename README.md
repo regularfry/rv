@@ -34,6 +34,9 @@ directory.  As the comment implies, the ruby must be installed before
 running rv-init, but you don't have to use ruby-install to provide it.
 Anything that installs a ruby which chruby can select will do.
 
+If you don't specify a ruby version, `rv-init` will pick whatever is
+listed in `.ruby-version`.
+
 To use the gemset you've just created:
 
     $ rv 1.9.3
@@ -43,15 +46,18 @@ gemset you've just created activated for you to work in.  If you now run
 `gem install rails`, the gem will be installed into
 `.rv/1.9.3/gem_home`.
 
+If you don't specify a ruby version, `rv` will pick the last ruby
+environment available in the `.rv` directory.
+
 If you want to install gems when you create the gemset to save a step,
 specify them to rv-init:
 
-    $ rv-init 1.9.3 rails bundler rspec rspec-rails  # for instance
+    $ rv-init 1.9.3 -- gem install rails bundler rspec rspec-rails  # for instance
 
 If you want a named gemset, you can specify it with the GEMENV
 environment variable:
 
-    $ GEMENV=.rv/myrailsapp rv-init 1.9.3 rails bundler
+    $ GEMENV=.rv/myrailsapp rv-init 1.9.3 -- gem install rails bundler
 
 This will create a gem environment at `.rv/myrailsapp`, with the rails
 and bundler gems installed by ruby 1.9.3.  You can activate it like so:

@@ -1,3 +1,10 @@
+rv (0.2.0) unstable; urgency=low
+
+  * Default rv-init's ruby selection to use .ruby-version
+  * Change argv handling in rv-init
+
+ -- Alex Young <alex@blackkettle.org>  Fri, 06 Feb 2015 18:31:06 +0000
+
 rv (0.1.0) unstable; urgency=low
 
   * Improve ruby selection logic
