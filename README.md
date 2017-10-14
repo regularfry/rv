@@ -8,6 +8,16 @@ development workflow.
 Installation
 ------------
 
+From scratch, run:
+
+    $ sudo ./install-rv.rb
+
+This will install `rv` itself, as well as its dependencies: `gemsh`, `chruby`,
+and `ruby-install`.  (This is a slight lie: `ruby-install` isn't actually a
+dependency, but I find that I always want the full set at once.)
+
+If you already have `chruby` installed, run:
+
     # make install
 
 Quick Start
